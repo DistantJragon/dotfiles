@@ -15,7 +15,7 @@ return {
         require("plugins.config.mason.install-all-cmd")(package_list)
       end, {})
       -- Comment out the following line if you don't want to install all packages on startup
-      require("plugins.config.mason.install-all-cmd")(package_list)
+      -- require("plugins.config.mason.install-all-cmd")(package_list)
     end,
   },
 
