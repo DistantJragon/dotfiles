@@ -29,6 +29,15 @@ return {
           -- the default case_mode is "smart_case"
         },
       },
+      defaults = {
+        file_ignore_patterns = {
+          "node_modules",
+          ".git",
+          ".cache",
+          ".vscode",
+          ".idea",
+        },
+      },
     })
     -- To get fzf loaded and working with telescope, you need to call
     -- load_extension, somewhere after setup function:
