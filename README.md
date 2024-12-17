@@ -39,7 +39,7 @@ For Windows:
 
 You can update these dotfiles by simply running git pull in the repository's directory. However, should you wish to make
 changes to any of the dotfiles due to personal preference and wish to make the update process less painful, you should
-maintain a new git branch for your changes.  
+maintain a new git branch (or fork [more info to be added]) for your changes.  
 
 (Any text inside angled brackets <> should be replaced with the appropriate text.)
 
