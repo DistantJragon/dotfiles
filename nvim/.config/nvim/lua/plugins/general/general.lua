@@ -10,7 +10,13 @@ return {
       vim.opt.termguicolors = true
     end,
     config = function()
-      require("nvim-tree").setup()
+      require("nvim-tree").setup({
+        filters = {
+          custom = {
+            "^\\.git" -- hide .git folder
+          }
+        }
+      })
       vim.keymap.set("n", "<Leader>e", function()
         require("nvim-tree.api").tree.open()
       end, { desc = "Open/Focus NvimTree" })
