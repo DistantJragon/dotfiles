@@ -12,9 +12,9 @@ while ($true) {
   if ($user_input -eq "q") {
     break
   }
-  $user_input = [int]$user_input
-  if ($user_input -ge 0 -and $user_input -lt $packages.Length) {
-    $package = $packages[$user_input - 1]
+  $choice = [int]$user_input - 1
+  if ($choice -ge 0 -and $choice -lt $packages.Length) {
+    $package = $packages[$choice]
     $install_result = & $package.Install
     if ($install_result -eq 0) {
       Write-Host "$($package.Name) installed successfully"
