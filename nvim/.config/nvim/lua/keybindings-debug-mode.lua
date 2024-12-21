@@ -1,5 +1,11 @@
 vim.g.DJNCFG_debug_mode_mappings = false
 
+local function ensure_tab_var_defined()
+  vim.t.djn_debug_mode = vim.t.djn_debug_mode or false
+end
+
+-- NOTE: This functionality can be rewritten if/when namespace support is added to keybindings
+
 local original_keymaps = {
   n = vim.api.nvim_get_keymap("n"),
   i = vim.api.nvim_get_keymap("i"),
@@ -65,6 +71,7 @@ local function debug_mode_deactivate()
 end
 
 local function check_debug_mode()
+  ensure_tab_var_defined()
   if vim.g.DJNCFG_debug_mode_mappings ~= vim.t.djn_debug_mode then
     if vim.g.DJNCFG_debug_mode_mappings then
       debug_mode_deactivate()
@@ -75,8 +82,7 @@ local function check_debug_mode()
 end
 
 vim.keymap.set("n", "<Leader>db", function()
-  -- If vim.t.djn_debug_mode is not defined, set it to false
-  vim.t.djn_debug_mode = vim.t.djn_debug_mode or false
+  ensure_tab_var_defined()
   -- Toggle the debug mode
   vim.t.djn_debug_mode = not vim.t.djn_debug_mode
   if vim.t.djn_debug_mode then
@@ -89,7 +95,7 @@ vim.keymap.set("n", "<Leader>db", function()
 end, { desc = "Toggle Debug Mode" })
 
 vim.keymap.set("n", "<Leader>ddb", function()
-  vim.t.djn_debug_mode = vim.t.djn_debug_mode or false
+  ensure_tab_var_defined()
   vim.t.djn_debug_mode = not vim.t.djn_debug_mode
 end, { desc = "Toggle Debug Mode global variable" })
 
