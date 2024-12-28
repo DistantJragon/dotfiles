@@ -13,9 +13,15 @@ return {
       require("nvim-tree").setup({
         filters = {
           custom = {
-            "^\\.git" -- hide .git folder
-          }
-        }
+            "^\\.git", -- hide .git folder
+          },
+        },
+        renderer = {
+          add_trailing = true,
+          group_empty = true,
+          full_name = true,
+          hidden_display = "all",
+        },
       })
       vim.keymap.set("n", "<Leader>e", function()
         require("nvim-tree.api").tree.open()
