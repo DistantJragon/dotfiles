@@ -5,6 +5,7 @@ local function ensure_tab_var_defined()
 end
 
 -- NOTE: This functionality can be rewritten if/when namespace support is added to keybindings
+-- (or some other way to configure custom keybindings without overwriting the default ones)
 
 local original_keymaps = {
   n = vim.api.nvim_get_keymap("n"),

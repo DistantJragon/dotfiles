@@ -1,5 +1,5 @@
 -- Formatter
-local formatters_by_ft = function ()
+local formatters_by_ft = function()
   local formatters = {
     c = { require("formatter.filetypes.c").clangformat },
     html = { require("formatter.filetypes.html").prettierd },
@@ -52,13 +52,13 @@ local formatters_by_ft = function ()
     ["*"] = {},
   }
 
-  -- Remove trailing whitespace on non-Windows systems
+  -- Add a formatter to remove trailing whitespace for all filetypes except Windows
+  -- (It uses sed which is not available on Windows)
   if vim.fn.has("win32") == 0 then
     table.insert(formatters["*"], require("formatter.filetypes.any").remove_trailing_whitespace)
   end
   return formatters
 end
-
 
 return {
   "mhartington/formatter.nvim",

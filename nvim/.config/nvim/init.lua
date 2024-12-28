@@ -5,6 +5,7 @@ require("host-programs")
 vim.g.mapleader = " "
 
 -- Set powershell as the shell before any plugins are loaded (important for toggleterm)
+-- Powershell is only set if the OS is Windows (or if it is forced in set-shell-powershell.lua)
 require("set-shell-powershell")
 require("lazy-init")
 require("keybindings")
