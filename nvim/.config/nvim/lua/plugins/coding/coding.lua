@@ -50,7 +50,16 @@ return {
   },
 
   -- Indentation lines to guide you
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", config = true },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      scope = {
+        show_start = false,
+        show_end = false,
+      },
+    },
+  },
 
   -- Linter
   {
