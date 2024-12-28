@@ -37,6 +37,16 @@ return {
           ".vscode",
           ".idea",
         },
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+        },
       },
     })
     -- To get fzf loaded and working with telescope, you need to call
