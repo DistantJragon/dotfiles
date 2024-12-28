@@ -17,7 +17,7 @@ if vim.fn.executable(debugpy_location) == 0 then
         .. "\nYou won't be able to debug python code in neovim until this is resolved."
         .. "\nYou can suppress this message by setting ignore_debugpy_error = true in "
         .. vim.fn.stdpath("config")
-        .. "lua/utils/debugpy-location.lua"
+        .. "lua/plugins/config/debugpy-location.lua"
         .. "\n",
       vim.log.levels.WARN
     )
