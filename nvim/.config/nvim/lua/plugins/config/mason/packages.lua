@@ -9,7 +9,7 @@ local packages_to_install = {
   -- Python DAP is configured in nvim-dap-python
   -- I haven't figured out how to configure Python debugging with the executable installed by mason
   -- Nevermind, but keeping the above comments until I've tested it
-  ["debugpy"] = {},
+  ["debugpy"] = { "python" },
 
   -- Linters (configure with nvim-lint)
   ["cpplint"] = { cmds = { "python" } },
