@@ -20,8 +20,7 @@ if (Test-Path($ChocolateyProfile)) {
 
 # Set up zoxide
 if (Get-Command zoxide -ErrorAction SilentlyContinue) {
-  Invoke-Expression (& { (zoxide init powershell | Out-String) })
-  Set-Alias cd z -Option AllScope
+  Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
 }
 
 # # Disable OMP for now
