@@ -6,7 +6,7 @@
 -- set shellquote= shellxquote=
 
 local force_pwsh = false -- Set to true to force using pwsh (Works for both Windows and Unix)
-if vim.fn.has("win32") == 1 or (vim.executable("pwsh") == 1 and force_pwsh) then
+if vim.fn.has("win32") == 1 or (force_pwsh and vim.fn.executable("pwsh") == 1) then
   local powershell_cmd = force_pwsh and "pwsh" or "powershell"
   local remove_tee_alias = force_pwsh and "Remove-Alias -Force -ErrorAction SilentlyContinue tee;"
     or "Remove-Item Alias:tee -Force -ErrorAction SilentlyContinue;"
