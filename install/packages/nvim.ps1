@@ -53,14 +53,12 @@ function remove-nvim-folders {
 }
 
 function new-nvim-symlink {
-  # Create a symlink at %LOCALAPPDATA%\nvim pointing to nvim\.config\nvim
   $nvim_config_path = "..\nvim\.config\nvim"
   $nvim_config_full_path = Join-Path $PSScriptRoot $nvim_config_path | Resolve-Path
   New-Item -ItemType SymbolicLink -Path $nvim_path -Value $nvim_config_full_path
 }
 
 function install-nvim-interactive {
-  # First, check if C:\Users\%USERNAME%\AppData\Local\nvim exists
   $user_continue = "y"
   if (Test-Path "$nvim_path") {
     # If it exists, ask the user if they want to backup the folder and continue
@@ -75,12 +73,15 @@ function install-nvim-interactive {
     $remove_result = remove-nvim-folders
     if ($remove_result -eq 1) {
       Write-Host "Failed to remove existing nvim/nvim-data folder(s)"
+      return 1
     } else {
       # Install the package
       new-nvim-symlink
       Write-Host "nvim package installed"
+      return 0
     }
   }
+  return 1
 }
 
 function install-nvim {

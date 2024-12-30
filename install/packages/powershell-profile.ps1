@@ -60,11 +60,14 @@ function install-powershell-profile-interactive {
     $remove_result = remove-powershell-profile
     if ($remove_result -eq 1) {
       Write-Host "Failed to remove existing profile"
+      return 1
     } else {
       new-powershell-profile-symlink
       Write-Host "powershell profile symlink created"
+      return 0
     }
   }
+  return 1
 }
 
 # function install-nvim {
@@ -89,7 +92,7 @@ if (-not $packages) {
 }
 
 $packages += @{
-  Name = "powershell"
+  Name = "powershell-profile"
   Install = {
     install-powershell-profile-interactive
   }
