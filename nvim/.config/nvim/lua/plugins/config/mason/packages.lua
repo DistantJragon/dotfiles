@@ -4,7 +4,7 @@ local packages_to_install = {
   -- DAPs
   ["bash-debug-adapter"] = {},
   -- NOTE: cpptools takes ~220 MB
-  ["cpptools"] = {},
+  -- ["cpptools"] = {},
   ["java-debug-adapter"] = {},
   ["js-debug-adapter"] = {},
   -- No Python DAP listed here
