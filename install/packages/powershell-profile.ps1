@@ -41,7 +41,7 @@ function remove-powershell-profile {
 function new-powershell-profile-symlink {
   $package_path = "..\..\powershell\Microsoft.PowerShell_profile.ps1"
   $package_full_path = Join-Path $PSScriptRoot $package_path | Resolve-Path
-  New-Item -ItemType SymbolicLink -Path $profile -Value $package_full_path
+  New-Item -ItemType SymbolicLink -Path $profile -Value $package_full_path > $null
 }
 
 function install-powershell-profile-interactive {
