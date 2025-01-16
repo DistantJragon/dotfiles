@@ -35,6 +35,11 @@ if (Get-Command zoxide -ErrorAction SilentlyContinue) {
 #   }
 # }
 
+if (Get-Command fnm -ErrorAction SilentlyContinue) {
+  # fnm's --use-on-cd overrides the cd command, which conflicts with zoxide
+  fnm env | Out-String | Invoke-Expression
+}
+
 function Prompt {
   "`n$PWD`nPS `$ "
 }
