@@ -8,7 +8,7 @@ if ($djncfg_interactive) {
 Write-Host "Installing Windows Terminal settings"
 
 $wTSettingsPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
-$configPath = "$PSScriptRoot\..\windows-terminal\settings.json" | Resolve-Path
+$configPath = "$PSScriptRoot\..\..\windows-terminal\settings.json" | Resolve-Path
 
 if ((Test-Path $wTSettingsPath) -and (Test-Path $configPath)) {
   Copy-Item -Path $wTSettingsPath -Destination "$HOME\wTSettings.json.bak" -Force
