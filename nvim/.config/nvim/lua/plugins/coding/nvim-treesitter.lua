@@ -23,6 +23,9 @@ local treesitter_plugin_spec = {
       },
       indent = { enable = true },
     })
+    require("nvim-treesitter.install").prefer_git = false -- use curl+tar instead
+    -- may need to comment out above or download tar if on Windows and nvim-treesitter can't download parsers
+    -- curl+tar will be default in future versions of nvim-treesitter
   end,
 }
 if require("plugins.config.has-c-compiler") then
