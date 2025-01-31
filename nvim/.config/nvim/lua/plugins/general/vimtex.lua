@@ -4,7 +4,12 @@ local M = {
     "lervag/vimtex",
     lazy = false,
     init = function()
-      vim.g.vimtex_view_method = "sioyek"
+      vim.g.vimtex_view_general_viewer = "okular"
+      vim.g.vimtex_view_general_options = "--unique file:@pdf @line"
+      if vim.fn.has("win32") == 1 then
+        vim.g.vimtex_view_general_viewer = "SumatraPDF"
+        vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
+      end
       if require("plugins.config.has-c-compiler") then
         vim.g.matchup_override_vimtex = 1
       end

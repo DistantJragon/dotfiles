@@ -95,8 +95,8 @@
         "commandline": "%SystemRoot%\\System32\\cmd.exe",
         "cursorShape": "bar",
         "font": {
-          "face": "UbuntuMono NF",
-          "size": 12
+          "face": "DroidSansM Nerd Font",
+          "size": 10
         },
         "guid": "{c45ef7df-6845-4d80-98fb-f5c3d3121a39}",
         "hidden": false,

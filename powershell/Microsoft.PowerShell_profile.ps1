@@ -14,17 +14,9 @@ if (($PROFILE_ITEM.Attributes -band [System.IO.FileAttributes]::ReparsePoint) -a
 
 # Import the Chocolatey Profile that contains the necessary code to enable
 # tab-completions to function for `choco`.
-# Be aware that if you are missing these lines from your profile, tab completion
-# for `choco` will not function.
-# See https://ch0.co/tab-completion for details.
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
-}
-
-# Set up zoxide
-if (Get-Command zoxide -ErrorAction SilentlyContinue) {
-  Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
 }
 
 # # Disable OMP for now
@@ -39,6 +31,16 @@ if (Get-Command zoxide -ErrorAction SilentlyContinue) {
 #   }
 # }
 
+if (Get-Command fnm -ErrorAction SilentlyContinue) {
+  # fnm's --use-on-cd overrides the cd command, which conflicts with zoxide
+  fnm env | Out-String | Invoke-Expression
+}
+
 function Prompt {
   "`n$PWD`nPS `$ "
+}
+
+# Set up zoxide
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+  Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
 }

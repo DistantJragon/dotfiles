@@ -53,9 +53,9 @@ function remove-nvim-folders {
 }
 
 function new-nvim-symlink {
-  $nvim_config_path = "..\nvim\.config\nvim"
+  $nvim_config_path = "..\..\nvim\.config\nvim"
   $nvim_config_full_path = Join-Path $PSScriptRoot $nvim_config_path | Resolve-Path
-  New-Item -ItemType SymbolicLink -Path $nvim_path -Value $nvim_config_full_path
+  New-Item -ItemType SymbolicLink -Path $nvim_path -Value $nvim_config_full_path > $null
 }
 
 function install-nvim-interactive {
