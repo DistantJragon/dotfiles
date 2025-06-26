@@ -1,9 +1,8 @@
 return {
   -- Programming plugin manager
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     lazy = false,
-    priority = 52, -- Must be loaded before mason-lspconfig, lspconfig, and mason-nvim-dap
     config = function()
       local package_list = (require("plugins.config.mason.package-buildable-filter"))(
         require("plugins.config.mason.packages")
@@ -21,89 +20,26 @@ return {
 
   -- Connects mason and nvim-lspconfig
   {
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    priority = 51, -- Must be loaded before lspconfig
+    "mason-org/mason-lspconfig.nvim",
+    -- lazy = false,
+    dependencies = {
+      "mason-org/mason.nvim", -- Not a dependency, but should be loaded
+      "neovim/nvim-lspconfig", -- Not a dependency, but should be loaded
+    },
     opts = {
       ensure_installed = (require("plugins.config.mason.package-buildable-filter"))(
         require("plugins.config.mason-lspconfig.lsps")
       ),
     },
-    config = function(_, opts)
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-      }
-      require("mason-lspconfig").setup(opts)
-      -- Automatic LSP server setup in mason-lspconfig is "advanced."
-      -- TODO: It is recommended by mason-lspconfig to manually configure LSP servers (in nvim-lspconfig).
-      -- (I don't care enough to do it myself yet)
-      -- Just make sure to comment out the following block if you do (see :h lspconfig-quickstart)
-      require("mason-lspconfig").setup_handlers({
-        -- First entry is the default handler
-        function(server_name)
-          require("lspconfig")[server_name].setup({ capabilities = capabilities })
-        end,
-        -- Custom handlers after (e.g ["pyright"] = function() ... end,)
-        ["ltex"] = function()
-          require("lspconfig").ltex.setup({
-            capabilities = capabilities,
-            settings = {
-              ltex = {
-                language = "en-US",
-                disabledRules = {
-                  ["en-US"] = { "MORFOLOGIK_RULE_EN_US" },
-                },
-              },
-            },
-          })
-        end,
-        ["lua_ls"] = function()
-          require("lspconfig").lua_ls.setup({
-            capabilities = capabilities,
-            on_init = function(client)
-              if client.workspace_folders then
-                local path = client.workspace_folders[1].name
-                if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
-                  return
-                end
-              end
-
-              client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-                runtime = {
-                  -- Tell the language server which version of Lua you're using
-                  -- (most likely LuaJIT in the case of Neovim)
-                  version = "LuaJIT",
-                },
-                -- Make the server aware of Neovim runtime files
-                workspace = {
-                  checkThirdParty = false,
-                  library = {
-                    vim.env.VIMRUNTIME,
-                    -- Depending on the usage, you might want to add additional paths here.
-                    -- "${3rd}/luv/library"
-                    -- "${3rd}/busted/library",
-                  },
-                  -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on
-                  -- your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
-                  -- library = vim.api.nvim_get_runtime_file("", true)
-                },
-              })
-            end,
-            settings = {
-              Lua = {},
-            },
-          })
-        end,
-      })
-    end,
   },
 
   -- LSP configuration
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+    dependencies = {
+      "mason-org/mason.nvim", -- Not a dependency, but should be loaded
+    },
     -- LSPs should be configured from within mason-lspconfig (configs can be customized there too)
   },
 
