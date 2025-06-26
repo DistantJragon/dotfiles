@@ -6,7 +6,7 @@ return {
 
   -- Python
   -- NOTE: basedpyright takes ~160 MB
-  -- ["basedpyright"] = { cmds = { python_command } },
+  ["basedpyright"] = { cmds = { python_command } },
 
   -- Bash
   ["bashls"] = { cmds = { "npm" } },
