@@ -1,6 +1,6 @@
 $djnscripts = "D:\MyFiles\Scripts"
 $djnrepos = "D:\MyFiles\repos"
-$djnpython = "C:\Program Files\Python"
+$djnpython = "C:\Users\jacob\AppData\Local\Programs\Python"
 
 # Set OHMYPOSH to the path of the oh-my-posh config file manually if automatic resolution is wished to be bypassed.
 $OHMYPOSH = ""
