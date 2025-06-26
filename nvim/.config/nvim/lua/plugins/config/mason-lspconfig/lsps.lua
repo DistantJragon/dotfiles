@@ -33,7 +33,8 @@ return {
   ["html"] = { cmds = { "npm" } },
 
   -- HTMX
-  ["htmx"] = { cmds = { "cargo" } },
+  -- NOTE: htmx creates very large log entries.
+  -- ["htmx"] = { cmds = { "cargo" } },
 
   -- Java
   ["java_language_server"] = { cmds = { "jlink", "mvn", "bash" } },
