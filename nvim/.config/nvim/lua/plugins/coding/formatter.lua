@@ -2,6 +2,7 @@
 local formatters_by_ft = function()
   local formatters = {
     c = { require("formatter.filetypes.c").clangformat },
+    cpp = { require("formatter.filetypes.cpp").clangformat },
     html = { require("formatter.filetypes.html").prettierd },
     java = { require("formatter.filetypes.java").clangformat },
     javascript = {
