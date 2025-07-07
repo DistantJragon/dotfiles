@@ -73,12 +73,12 @@ return {
         require("which-key").add({
           { "g", buffer = 0, group = "Goto" },
           { "gd", vim.lsp.buf.definition, buffer = 0, desc = "Go to definition" },
-          {
-            "gr",
-            require("telescope.builtin").lsp_references,
-            buffer = 0,
-            desc = "Open a telescope window with references",
-          },
+          -- {
+          --   "gr",
+          --   require("telescope.builtin").lsp_references,
+          --   buffer = 0,
+          --   desc = "Open a telescope window with references",
+          -- },
         })
       end,
     })
