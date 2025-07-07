@@ -37,7 +37,7 @@ return {
   -- ["htmx"] = { cmds = { "cargo" } },
 
   -- Java
-  ["java_language_server"] = { cmds = { "jlink", "mvn", "bash" } },
+  -- ["java_language_server"] = { cmds = { "jlink", "mvn", "bash" } },
   ["jdtls"] = {},
 
   -- JSON
