@@ -21,7 +21,7 @@ local packages_to_install = {
   ["checkstyle"] = {},
   ["biome"] = { cmds = { "npm" } },
   ["jsonlint"] = { cmds = { "npm" } },
-  ["luacheck"] = { cmds = { "luarocks" } },
+  -- ["luacheck"] = { cmds = { "luarocks" } },
   ["markdownlint"] = { cmds = { "npm" } },
   ["shellcheck"] = {},
   ["flake8"] = { cmds = { python_command } },
