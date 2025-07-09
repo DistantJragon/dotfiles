@@ -107,7 +107,7 @@ return {
         javascript = { "biomejs" },
         json = { "jsonlint" },
         latex = { "chktex" }, -- Not in mason
-        lua = { "luacheck" },
+        -- lua = { "luacheck" },
         make = { "checkmake" },
         markdown = { "markdownlint" },
         ps1 = { "shellcheck" },
