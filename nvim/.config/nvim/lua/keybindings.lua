@@ -14,9 +14,11 @@ which_key.add({
   {
     "<Esc>",
     function()
-      vim.opt.hlsearch = false
+      vim.cmd("nohlsearch")
     end,
     mode = "n",
     desc = "Remove search highlighting with escape",
   },
+  { "<Leader>t", group = "toggleterm" },
+  { "<Leader>tb", "<cmd>ToggleTerm direction=tab<CR>", desc = "Toggle terminal tab" },
 })
