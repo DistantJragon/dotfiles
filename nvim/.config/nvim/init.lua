@@ -8,5 +8,6 @@ vim.g.mapleader = " "
 -- Powershell is only set if the OS is Windows (or if it is forced in set-shell-powershell.lua)
 require("set-shell-powershell")
 require("lazy-init")
+require("djnlspconfig")
 require("keybindings")
 require("nvim-options")
