@@ -44,3 +44,25 @@ function Prompt {
 if (Get-Command zoxide -ErrorAction SilentlyContinue) {
   Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
 }
+
+# Create a function to that activates the Python virtual environment in the current directory
+function Activate-PythonEnv {
+  $dotvenv = Join-Path $PWD ".venv"
+  $venv = Join-Path $PWD "venv"
+  if (Test-Path $dotvenv) {
+    Write-Host "Activating Python virtual environment from .venv"
+    & "$dotvenv\Scripts\Activate.ps1"
+  } elseif (Test-Path $venv) {
+    Write-Host "Activating Python virtual environment from venv"
+    & "$venv\Scripts\Activate.ps1"
+  } else {
+    Write-Host "No Python virtual environment found in the current directory."
+  }
+}
+
+# Create an alias for Activate-PythonEnv
+if ( -not (Get-Command apy -ErrorAction SilentlyContinue) ) {
+  Set-Alias apy Activate-PythonEnv
+} else {
+  Write-Host "Alias 'apy' already exists. Skipping alias creation."
+}
