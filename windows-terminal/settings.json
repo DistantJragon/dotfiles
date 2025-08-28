@@ -39,6 +39,10 @@
             "keys": "ctrl+c"
         },
         {
+            "id": null,
+            "keys": "ctrl+shift+w"
+        },
+        {
             "id": "User.find",
             "keys": "ctrl+shift+f"
         },
