@@ -28,6 +28,9 @@ set.shiftwidth = tab_size
 -- add line numbers
 set.number = true
 
+-- set relative line numbers (except for current line since number is also set)
+set.relativenumber = true
+
 -- set a column border for good coding style
 set.colorcolumn = tostring(text_window_width)
 
@@ -60,3 +63,6 @@ set.list = true
 
 -- save session options (removed saving folds b/c it was causing errors and ufo does it anyway)
 set.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,terminal"
+
+-- add window border, make it bold
+set.winborder = "bold"
