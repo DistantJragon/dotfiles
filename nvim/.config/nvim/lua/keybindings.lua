@@ -27,6 +27,8 @@ which_key.add({
   { "<Leader>fg", "<cmd>Telescope live_grep<CR>", desc = "Live grep" },
   { "<Leader>fb", "<cmd>Telescope buffers<CR>", desc = "Find buffers" },
   { "<Leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help tags" },
+  { "<Leader>fr", "<cmd>Telescope oldfiles<CR>", desc = "Recent files" },
+  { "<Leader>fl", "<cmd>Telescope resume<CR>", desc = "Resume last search" },
 
   { "<Leader>n", group = "new" },
   { "<Leader>nt", "<cmd>tabnew<CR>", desc = "New tab" },
