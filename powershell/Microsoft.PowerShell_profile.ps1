@@ -55,3 +55,10 @@ function Activate-PythonEnv {
     Write-Host "No Python virtual environment found in the current directory."
   }
 }
+
+# Create an alias for Activate-PythonEnv
+if ( -not (Get-Command apy -ErrorAction SilentlyContinue) ) {
+  Set-Alias apy Activate-PythonEnv
+} else {
+  Write-Host "Alias 'apy' already exists. Skipping alias creation."
+}
