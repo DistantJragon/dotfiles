@@ -125,6 +125,7 @@ return {
   -- Prints virtual texts to warn/inform user while coding
   "theHamsta/nvim-dap-virtual-text",
 
+  --[[
   -- Python DAP support plugin
   {
     "mfussenegger/nvim-dap-python",
@@ -136,4 +137,5 @@ return {
       end
     end,
   },
+  --]]
 }
