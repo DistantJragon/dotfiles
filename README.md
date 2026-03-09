@@ -26,15 +26,19 @@ cross-platform as well.
 
 For Linux:
 
-1. Clone this repository to your home directory.
+1. Clone this repository to your home directory
+   (or anywhere you like if you're fine with an extra option in the stow command).
 2. `cd` into the repository.
 3. Run `stow <package>` for each package in the repository that you want to install.
    For example, to install the `nvim` dotfiles, run `stow nvim`.
 
+   If the repository is not in your home directory,
+   you will need to specify the path to the repository with the `-t` option.
+
 For Windows:
 
 1. Clone this repository
-2. Run the `install-windows.ps1` script in PowerShell.
+2. Run the `install/install.ps1` script in PowerShell.
    This script will create symbolic links in the necessary folders for the packages you wish to install.
 
 ## Editing and Staying Up to Date
