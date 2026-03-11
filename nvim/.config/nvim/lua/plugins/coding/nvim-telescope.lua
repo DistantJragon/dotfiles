@@ -13,8 +13,7 @@ if build_command ~= "" then
 end
 return {
   "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
-  -- tag = '0.1.6', or branch = '0.1.x',
+  version = "*",
   dependencies = telescope_deps,
   config = function()
     local telescope = require("telescope")
