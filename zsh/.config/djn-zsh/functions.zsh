@@ -37,15 +37,26 @@ djn-detect-git() {
   fi
 }
 
+# This is run within the precmd hook
+djn-git-check-branch() {
+  if [[ -z "$DJN_GIT_ROOT" ]]; then
+    DJN_GIT_BRANCH=""
+    DJN_GIT_TAG=""
+    DJN_GIT_COMMIT=""
+    return
+  fi
+  DJN_GIT_BRANCH=$(git branch --show-current 2>/dev/null)
+  DJN_GIT_TAG=$(git describe --tags --exact-match 2>/dev/null)
+  DJN_GIT_COMMIT=$(git rev-parse --short HEAD 2>/dev/null)
+}
+
 # This is run within the precmd hook, so it runs before the prompt is generated.
 djn-git-check-ahead-behind() {
   if [[ -z "$DJN_GIT_ROOT" ]]; then
     DJN_GIT_AHEAD=0
     DJN_GIT_BEHIND=0
-    DJN_GIT_BRANCH=""
     return
   fi
-  DJN_GIT_BRANCH=$(git branch --show-current 2>/dev/null)
   read DJN_GIT_AHEAD DJN_GIT_BEHIND < <(git rev-list --left-right --count HEAD...@{upstream} 2>/dev/null || echo "0 0")
 }
 

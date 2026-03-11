@@ -47,7 +47,8 @@ setopt HIST_IGNORE_DUPS
 
 source "$HOME/.config/djn-zsh/functions.zsh"
 source "$HOME/.config/djn-zsh/prompt.zsh"
-DJN_MAX_SHORTENED_CWD_LENGTH=20
+DJN_MAX_SHORTENED_CWD_LENGTH=25
+DJN_MAX_GIT_HEAD_DISPLAY_LENGTH=15
 chpwd() {
   djn-shorten-cwd
   djn-detect-git
@@ -73,6 +74,7 @@ chpwd
 
 precmd () {
   local last_exit_code=$?
+  djn-git-check-branch
   djn-git-check-ahead-behind
   djn-git-check-dirty
   djn-reset-last-exit-code "$last_exit_code"
