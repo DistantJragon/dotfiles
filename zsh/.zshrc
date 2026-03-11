@@ -1,0 +1,82 @@
+#!/usr/bin/env zsh
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+autoload -Uz compinit && compinit
+
+eval "$(zoxide init zsh)"
+# For completions to work,
+# the above line must be added after compinit is called.
+# You may have to rebuild your completions cache by running
+# rm ~/.zcompdump*; compinit.
+
+# DJN_OH_MY_POSH_CONFIG="$HOME/.config/ohmyposh/config.toml"
+# if [[ -f "$DJN_OH_MY_POSH_CONFIG" ]]; then
+#   eval "$(oh-my-posh init zsh --config "$DJN_OH_MY_POSH_CONFIG")"
+# fi
+# unset DJN_OH_MY_POSH_CONFIG
+
+# Make run-help work with builtins instead of acting like man.
+# Alias help to run-help.
+unalias run-help
+autoload run-help
+HELPDIR=/usr/share/zsh/${ZSH_VERSION}/help
+alias help='run-help'
+
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+# Set all "correct" styles to white,
+# so that they don't get colored differently from the default text.
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=white'
+ZSH_HIGHLIGHT_STYLES[command]='fg=white'
+ZSH_HIGHLIGHT_STYLES[function]='fg=white'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=white'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=white'
+
+alias make="make -j`nproc`"
+alias ninja="ninja -j`nproc`"
+
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+
+source "$HOME/.config/djn-zsh/functions.zsh"
+source "$HOME/.config/djn-zsh/prompt.zsh"
+DJN_MAX_SHORTENED_CWD_LENGTH=20
+chpwd() {
+  djn-shorten-cwd
+  djn-detect-git
+}
+chpwd
+
+# if autoload -Uz vcs_info; then
+#   zstyle ':vcs_info:*' actionformats \
+  #     '(%f%s)-[%b|%a]%f '
+#   # '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+#   zstyle ':vcs_info:*' formats \
+  #     '(%f%s)-[%b]%f %m'
+#   # '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+#   zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+#   zstyle ':vcs_info:*' enable git
+#   source "$HOME/.config/djn-zsh/djn-prompt-cmd"
+#   precmd () { vcs_info; djn-prompt-cmd }
+#
+#   # setopt PROMPT_SUBST
+#   # PS1='%F{5}[%F{2}%n%F{5}] %F{3}%3~ ${vcs_info_msg_0_}%f%# '
+#   # PS1='[%n] %3~ ${vcs_info_msg_0_}%f%# '
+# fi
+
+precmd () {
+  local last_exit_code=$?
+  djn-git-check-ahead-behind
+  djn-git-check-dirty
+  djn-reset-last-exit-code "$last_exit_code"
+  djn-prompt-cmd
+}
+
+eval "$(zoxide init --cmd cd zsh)"
