@@ -13,6 +13,20 @@ your liking.
 If any dotfile's program happens to be cross-platform (Linux/Windows), I will make an effort to make the dotfile
 cross-platform as well.
 
+# Packages
+
+- fish  
+  (I've switched to zsh, so this may be deprecated in the future)
+- Neovim
+- oh-my-posh  
+  (Deprecated)
+- PowerShell  
+  (Deprecated)
+- Windows Terminal  
+  (Deprecated)
+- zsh
+
+
 ## Installation
 
 ### Prerequisites
