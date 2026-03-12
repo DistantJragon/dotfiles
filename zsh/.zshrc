@@ -50,7 +50,7 @@ chpwd() {
 chpwd
 
 
-precmd () {
+precmd() {
   local last_exit_code=$?
   djn-git-check-branch
   djn-git-check-ahead-behind
