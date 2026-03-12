@@ -45,13 +45,17 @@ DJN_MAX_SHORTENED_CWD_LENGTH=25
 DJN_MAX_GIT_HEAD_DISPLAY_LENGTH=15
 chpwd() {
   djn-shorten-cwd
+  djn-detect-git
 }
 chpwd
 
-source "$HOME/.local/share/gitstatus/gitstatus.plugin.zsh"
-gitstatus_stop DJN_ZSH_$$ && gitstatus_start -s 100 -u 100 -c 100 -d 100 DJN_ZSH_$$
 
 precmd() {
+  local last_exit_code=$?
+  djn-git-check-branch
+  djn-git-check-ahead-behind
+  djn-git-check-dirty
+  djn-reset-last-exit-code "$last_exit_code"
   djn-prompt-cmd
 }
 
