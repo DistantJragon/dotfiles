@@ -10,20 +10,27 @@ djn-prompt-cmd() {
   local venv=""
   [[ -n "$VIRTUAL_ENV" ]] && venv=" "
 
+  gitstatus_query DJN_ZSH_$$
+
   local git_head_display="" git_dirty="" git_ahead="" git_behind=""
-  if [[ -n "$DJN_GIT_ROOT" ]]; then
-    if [[ -n "$DJN_GIT_BRANCH" ]]; then git_head_display="  $DJN_GIT_BRANCH"
-    elif [[ -n "$DJN_GIT_TAG" ]]; then git_head_display=" #$DJN_GIT_TAG"
-    else git_head_display=" @$DJN_GIT_COMMIT"
+  if [[ "$VCS_STATUS_RESULT" == "ok-sync" ]]; then
+    if [[ -n "$VCS_STATUS_REMOTE_BRANCH" ]]; then
+      git_head_display="  $VCS_STATUS_REMOTE_BRANCH"
+    elif [[ -n "$VCS_STATUS_LOCAL_BRANCH" ]]; then
+      git_head_display="  $VCS_STATUS_LOCAL_BRANCH"
+    elif [[ -n "$VCS_STATUS_TAG" ]]; then
+      git_head_display=" #$VCS_STATUS_TAG"
+    else
+      git_head_display=" @$VCS_STATUS_COMMIT"
     fi
-    (( DJN_GIT_DIRTY )) && git_dirty=" *"
-    if (( DJN_GIT_AHEAD )); then
-      git_ahead="↑${DJN_GIT_AHEAD} "
-      (( DJN_GIT_AHEAD > 99 )) && git_ahead="↑󰶼 "
+    (( VCS_STATUS_HAS_UNSTAGED == 1 )) && git_dirty=" *"
+    if (( VCS_STATUS_COMMITS_AHEAD )); then
+      git_ahead="↑${VCS_STATUS_COMMITS_AHEAD} "
+      (( VCS_STATUS_COMMITS_AHEAD > 99 )) && git_ahead="↑󰶼 "
     fi
-    if (( DJN_GIT_BEHIND )); then
-      git_behind="↓${DJN_GIT_BEHIND} "
-      (( DJN_GIT_BEHIND > 99 )) && git_behind="↓󰶼 "
+    if (( VCS_STATUS_COMMITS_BEHIND )); then
+      git_behind="↓${VCS_STATUS_COMMITS_BEHIND} "
+      (( VCS_STATUS_COMMITS_BEHIND > 99 )) && git_behind="↓󰶼 "
     fi
   fi
 
