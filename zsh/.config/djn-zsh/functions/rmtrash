@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+rmtrash() {
+  local items=("$@")
+  if [[ ${#items[@]} -eq 0 ]]; then
+    echo "Usage: rmtrash <file1> <file2> ..." >&2
+    return 1
+  fi
+  for item in "${items[@]}"; do
+    if [[ -e "$item" ]]; then
+      kioclient move "$item" trash:/
+    else
+      echo "rmtrash: '$item' does not exist." >&2
+    fi
+  done
+  return 0
+}

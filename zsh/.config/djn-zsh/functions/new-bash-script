@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+new-bash-script() {
+  local script_name="$1"
+  if [[ -z "$script_name" ]]; then
+    echo "Usage: new-bash-script <script-name>" >&2
+    return 1
+  fi
+  if [[ -f "$script_name" ]]; then
+    echo "File '$script_name' already exists. Please choose a different name." >&2
+    return 1
+  fi
+  cat > "$script_name" << 'EOF'
+#!/usr/bin/env bash
+
+
+EOF
+  chmod +x "$script_name"
+  echo "Created new bash script: $script_name"
+  return 0
+}

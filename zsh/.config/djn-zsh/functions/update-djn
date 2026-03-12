@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+update-djn() {
+  if ! command -v arch-news-checker-djn &> /dev/null; then
+    echo "arch-news-checker-djn is not installed. Please install it first." >&2
+    return 1
+  fi
+
+  arch-news-checker-djn -c
+  local news_status="$?"
+  if (( news_status == 0 )); then
+    sudo pacman -Syu
+    paru -Syu
+  elif (( news_status == 2 )); then
+    echo "There are new Arch Linux news items. Please read them before updating. (arch-news-checker-djn -h)"
+    return 1
+  else
+    echo "There was an issue fetching the news. Aborting system update."
+    return 1
+  fi
+}

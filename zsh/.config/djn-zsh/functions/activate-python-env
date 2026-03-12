@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+activate-python-env() {
+  local venv="$1"
+  if [[ -z "$venv" ]]; then
+    if [[ -f ".venv/bin/activate" ]]; then
+      source ".venv/bin/activate"
+    elif [[ -f "venv/bin/activate" ]]; then
+      source "venv/bin/activate"
+    else
+      echo "No virtual environment found. Please create one using 'python -m .venv venv'." >&2
+      return 1
+    fi
+    return 0
+  fi
+  if [[ -f "$venv/bin/activate" ]]; then
+    source "$venv/bin/activate"
+  else
+    echo "Virtual environment '$venv' not found. Please create it using 'python -m venv $venv'." >&2
+    return 1
+  fi
+  return 0
+}
