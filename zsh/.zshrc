@@ -30,7 +30,7 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=white'
 ZSH_HIGHLIGHT_STYLES[command]='fg=white'
 ZSH_HIGHLIGHT_STYLES[function]='fg=white'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=white'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=white,underline'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=white'
 
 alias make="make -j`nproc`"
