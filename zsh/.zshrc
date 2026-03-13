@@ -12,13 +12,6 @@ eval "$(zoxide init zsh)"
 # You may have to rebuild your completions cache by running
 # rm ~/.zcompdump*; compinit.
 
-# Make run-help work with builtins instead of acting like man.
-# Alias help to run-help.
-unalias run-help
-autoload run-help
-HELPDIR=/usr/share/zsh/${ZSH_VERSION}/help
-alias help='run-help'
-
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh

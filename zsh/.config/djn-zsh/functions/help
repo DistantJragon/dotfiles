@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+help() {
+  local pattern="$1"
+  if [[ -z "$pattern" ]]; then
+    man zsh
+  else
+    # The first pattern will highlight just up to the end of the command name,
+    # but may find a different builtin with the same prefix.
+    # The second pattern will highlight the whole line, but will find the exact
+    # builtin only (unless it doesn't exist)
+
+    # LESS="$LESS --hilite-search --pattern='^\s*${pattern}'" man zshbuiltins
+    LESS="$LESS --hilite-search --pattern=^\s*${pattern}(\s.*|)$" \
+      man zshbuiltins
+  fi
+  return 0
+}
