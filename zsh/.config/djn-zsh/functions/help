@@ -9,6 +9,8 @@ help() {
     # but may find a different builtin with the same prefix.
     # The second pattern will highlight the whole line, but will find the exact
     # builtin only (unless it doesn't exist)
+    # I would use "^\s*${cmd}(\s|$)",
+    # but I can't get the $ inside the capture group without breaking the less command
 
     # LESS="$LESS --hilite-search --pattern='^\s*${pattern}'" man zshbuiltins
     LESS="$LESS --hilite-search --pattern=^\s*${pattern}(\s.*|)$" \
