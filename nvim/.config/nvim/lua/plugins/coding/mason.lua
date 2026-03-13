@@ -40,7 +40,7 @@ return {
     dependencies = {
       "mason-org/mason.nvim", -- Not a dependency, but should be loaded
     },
-    -- LSPs should be configured from within mason-lspconfig (configs can be customized there too)
+    -- LSPs should be configured with nvim's built-in LSP client
   },
 
   -- Connects NeoVim to DAP(s)
