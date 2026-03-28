@@ -87,7 +87,7 @@ vim.lsp.enable("bashls")
 vim.lsp.enable("biome")
 
 -- JavaScript, TypeScript
--- vim.lsp.enable("ts_ls")
+vim.lsp.enable("ts_ls")
 
 -- C, C++
 vim.lsp.enable("clangd")
