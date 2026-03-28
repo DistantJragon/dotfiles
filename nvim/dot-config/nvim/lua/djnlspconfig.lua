@@ -19,7 +19,7 @@ vim.lsp.config("ltex", {
     },
   },
 })
--- vim.lsp.enable("ltex")
+vim.lsp.enable("ltex")
 
 -- Lua
 vim.lsp.config("lua_ls", {
@@ -73,33 +73,33 @@ vim.lsp.config("lua_ls", {
     Lua = {},
   },
 })
--- vim.lsp.enable("lua_ls")
+vim.lsp.enable("lua_ls")
 
 -- LSP servers with no special configuration
 
 -- Python
--- vim.lsp.enable("basedpyright")
+vim.lsp.enable("basedpyright")
 
 -- Bash
--- vim.lsp.enable("bashls")
+vim.lsp.enable("bashls")
 
 -- JavaScript, TypeScript, CSS?, HTML?, JSON?, ...
--- vim.lsp.enable("biome")
+vim.lsp.enable("biome")
 
 -- JavaScript, TypeScript
 -- vim.lsp.enable("ts_ls")
 
 -- C, C++
--- vim.lsp.enable("clangd")
+vim.lsp.enable("clangd")
 
 -- Rust
--- vim.lsp.enable("rust_analyzer")
+vim.lsp.enable("rust_analyzer")
 
 -- Systemd
--- vim.lsp.enable("systemd_lsp")
+vim.lsp.enable("systemd_lsp")
 
 -- TOML
--- vim.lsp.enable("taplo")
+vim.lsp.enable("taplo")
 
 -- YAML
--- vim.lsp.enable("yamlls")
+vim.lsp.enable("yamlls")
