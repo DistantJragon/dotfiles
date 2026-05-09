@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+update-full-djn() {
+  update-djn || return 1
+  rustup update
+  cargo install-update -a
+  # If this command fails due to permissions, you need to configure npm to use a prefix.
+  npm update -g
+  uv tool update --all
+  $HOME/Downloads/Vencord/install.sh -install
+}
