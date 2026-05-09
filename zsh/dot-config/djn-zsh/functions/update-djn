@@ -10,6 +10,7 @@ update-djn() {
   local news_status="$?"
   if (( news_status == 0 )); then
     sudo pacman -Syu
+    paru -Syu
   elif (( news_status == 2 )); then
     echo "There are new Arch Linux news items. Please read them before updating. (arch-news-checker-djn -h)"
     return 1
