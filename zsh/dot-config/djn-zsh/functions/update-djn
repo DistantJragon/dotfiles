@@ -9,8 +9,23 @@ update-djn() {
   arch-news-checker-djn -c
   local news_status="$?"
   if (( news_status == 0 )); then
-    sudo pacman -Syu
+    # Remove Rust bin (from rustup) from PATH to prevent potential issues
+    local OLD_PATH="$PATH"
+    local rust_bin="$HOME/.cargo/bin"
+    if [[ "$PATH" == *"$rust_bin"* ]]; then
+      PATH="${PATH//$rust_bin:}"
+      PATH="${PATH//:$rust_bin}"
+    fi
+
+    if ! sudo pacman -Syu; then
+      echo "System update failed. Aborting AUR update."
+      PATH="$OLD_PATH"
+      return 1
+    fi
     paru -Syu
+
+    # Restore the original PATH
+    PATH="$OLD_PATH"
   elif (( news_status == 2 )); then
     echo "There are new Arch Linux news items. Please read them before updating. (arch-news-checker-djn -h)"
     return 1
