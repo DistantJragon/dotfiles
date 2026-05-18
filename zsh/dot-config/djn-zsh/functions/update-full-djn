@@ -2,10 +2,15 @@
 
 update-full-djn() {
   update-djn || return 1
+  printf "\n-- \e[1m\e[4mrustup Update\e[0m --\n"
   rustup update
+  printf "\n-- \e[1m\e[4mcargo Update\e[0m --\n"
   cargo install-update -a
+  printf "\n-- \e[1m\e[4mnpm Update\e[0m --\n"
   # If this command fails due to permissions, you need to configure npm to use a prefix.
   npm update -g
+  printf "\n-- \e[1m\e[4muv Update\e[0m --\n"
   uv tool update --all
+  printf "\n-- \e[1m\e[4mVencord Update\e[0m --\n"
   $HOME/Downloads/Vencord/install.sh -install
 }

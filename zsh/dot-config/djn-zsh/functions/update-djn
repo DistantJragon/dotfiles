@@ -17,11 +17,14 @@ update-djn() {
       PATH="${PATH//:$rust_bin}"
     fi
 
+    # Update the system
+    printf "\n-- \e[1m\e[4mSystem Update\e[0m --\n"
     if ! sudo pacman -Syu; then
       echo "System update failed. Aborting AUR update."
       PATH="$OLD_PATH"
       return 1
     fi
+    printf "\n-- \e[1m\e[4mAUR Update\e[0m --\n"
     paru -Syu
 
     # Restore the original PATH
