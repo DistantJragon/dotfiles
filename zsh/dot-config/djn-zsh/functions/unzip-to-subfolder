@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+
+unzip-to-subfolder() {
+  if (($# == 0)); then
+    echo "Usage: unzip-to-subfolder <zip-files>"
+    return 1
+  fi
+
+  for zip_file in "$@"; do
+    echo " --- \e[34m${zip_file:t}\e[0m --- "
+    if [[ ! -f "$zip_file" ]]; then
+      echo "\e[31mFile not found: $zip_file\e[0m"
+      continue
+    fi
+
+    if 7z x "$zip_file" -o'*' -aoa; then
+      new_dir="${zip_file:r}"
+      if [[ ! -d "$new_dir" ]]; then
+        echo "\e[33mWarning: Expected directory not found after unzipping: $new_dir\e[0m"
+        continue
+      fi
+      rm -f "$zip_file"
+    else
+      echo "\e[31mFailed to unzip: $zip_file\e[0m"
+    fi
+
+  done
+}
