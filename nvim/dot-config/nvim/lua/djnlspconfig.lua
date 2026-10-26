@@ -86,6 +86,9 @@ vim.lsp.config("lua_ls", {
 -- JavaScript, TypeScript, CSS?, HTML?, JSON?, ...
 -- vim.lsp.enable("biome")
 
+-- JavaScript, TypeScript
+-- vim.lsp.enable("ts_ls")
+
 -- C, C++
 -- vim.lsp.enable("clangd")
 
