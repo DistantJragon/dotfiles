@@ -2,12 +2,6 @@ local which_key = require("which-key")
 -- Run keybindings-debug-mode.lua
 require("keybindings-debug-mode")
 
--- Exit terminal mode with escape
--- vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { silent = true })
-which_key.add({
-  { "<Esc>", "<C-\\><C-n>", mode = "t", desc = "Exit terminal mode with escape" },
-})
-
 which_key.add({
   -- Remove search highlighting with escape
   {
@@ -37,4 +31,7 @@ which_key.add({
   { "<Leader>nt", "<cmd>tabnew<CR>", desc = "New tab" },
   { "<Leader>nvb", "<cmd>vsplit<CR>", desc = "New vertical buffer" },
   { "<Leader>nhb", "<cmd>split<CR>", desc = "New horizontal buffer" },
+
+  -- Exit terminal mode with escape
+  { "<Esc>", "<C-\\><C-n>", mode = "t", desc = "Exit terminal mode with escape" },
 })
