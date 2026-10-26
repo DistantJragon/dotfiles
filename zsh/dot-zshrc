@@ -29,8 +29,8 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg=white'
 # zsh substring search
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='default'
 
-alias make="make -j`nproc`"
-alias ninja="ninja -j`nproc`"
+alias make="make -j$(nproc)"
+alias ninja="ninja -j$(nproc)"
 
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
