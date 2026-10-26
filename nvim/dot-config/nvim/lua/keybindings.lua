@@ -8,8 +8,6 @@ which_key.add({
   { "<Esc>", "<C-\\><C-n>", mode = "t", desc = "Exit terminal mode with escape" },
 })
 
--- Remove search highlighting with escape
--- vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
 which_key.add({
   -- Remove search highlighting with escape
   {
