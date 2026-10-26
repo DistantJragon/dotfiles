@@ -26,6 +26,9 @@ ZSH_HIGHLIGHT_STYLES[function]='fg=white'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=white,underline'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=white'
 
+# zsh substring search
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='default'
+
 alias make="make -j`nproc`"
 alias ninja="ninja -j`nproc`"
 
