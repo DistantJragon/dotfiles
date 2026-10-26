@@ -34,4 +34,11 @@ which_key.add({
 
   -- Exit terminal mode with escape
   { "<Esc>", "<C-\\><C-n>", mode = "t", desc = "Exit terminal mode with escape" },
+
+  -- System clipboard keybindings
+  { "<Leader>y", '"+y', mode = { "n", "v" }, desc = "Yank to system clipboard" },
+  { "<Leader>Y", '"+Y', mode = "n", desc = "Yank line to system clipboard" },
+
+  { "<Leader>p", '"+p', mode = { "n", "v" }, desc = "Paste from system clipboard" },
+  { "<Leader>P", '"+P', mode = "n", desc = "Paste before from system clipboard" },
 })

@@ -35,7 +35,8 @@ set.relativenumber = true
 set.colorcolumn = tostring(text_window_width)
 
 -- use system clipboard when yanking and pasting
-set.clipboard = "unnamedplus"
+-- Commented out in favor of special keybindings for copying to system clipboard
+-- set.clipboard = "unnamedplus"
 
 -- highlight current cursor line
 set.cursorline = true
