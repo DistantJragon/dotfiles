@@ -53,8 +53,8 @@ if [[ -d "$HOME/.config/djn-zsh/functions" ]]; then
   autoload -Uz "$HOME/.config/djn-zsh/functions/"*(.N:t)
 fi
 
-alias ls='eza -l --color=always --group-directories-first --icons=automatic'
-alias lh='eza --color=always --group-directories-first --icons=automatic'
+alias ls='eza -l --color=always --group-directories-first --icons=auto'
+alias lh='eza --color=always --group-directories-first --icons=auto'
 
 export MANROFFOPT="-c"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
