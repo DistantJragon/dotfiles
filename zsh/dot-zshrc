@@ -15,6 +15,7 @@ eval "$(zoxide init --cmd cd zsh)"
 source /usr/share/zsh-antidote/antidote.zsh
 antidote load
 
+# zsh syntax highlighting
 typeset -A ZSH_HIGHLIGHT_STYLES
 
 # Set all "correct" styles to white,
